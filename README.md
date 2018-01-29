@@ -15,4 +15,4 @@ Nekonium Twitter faucet
 http://nekonium.network/account/0x1ec366337ef2de16a5765700da06bb96a7312845
 
 # License 
-  MIT
+  Copyright 2018 @mike_theminer MIT License
