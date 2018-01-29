@@ -13,3 +13,6 @@ Nekonium Twitter faucet
 
 # Donation for the faucet (not for myself)
 http://nekonium.network/account/0x1ec366337ef2de16a5765700da06bb96a7312845
+
+# License 
+  MIT
