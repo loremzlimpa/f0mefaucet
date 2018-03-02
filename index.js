@@ -74,7 +74,7 @@ function get_messageJSON(msg){
 }
 
 //ws : the websocket used to reply to client's browser
-function send_nuko(to, amount, ws, userid)  {
+function send_f0me(to, amount, ws, userid)  {
         var number = web3.eth.getTransactionCount(account);
         var tra = {
         	nonce:web3.toHex(number),
@@ -100,8 +100,8 @@ function send_nuko(to, amount, ws, userid)  {
 						console.log("updated tx", accounts[userid].lasttx);
 						db.update(userid, moment().format()) ;
             ws.send(get_messageJSON("Success! "));
-            // + "http://nekonium.network/tx/"+hash
-            ws.send(JSON.stringify({'blocklink':"http://nekonium.network/tx/"+hash}));
+            // + "http://http://explorer.f0me.ru/tx/"+hash
+            ws.send(JSON.stringify({'blocklink':"http://http://explorer.f0me.ru/tx/"+hash}));
         });
   };
 
@@ -127,7 +127,7 @@ wss.broadcast = function broadcast() {
     console.log("update ", blocks, " fund ", funds);
      //ws.send(JSON.stringify({'blocks':blocks, 'funds':funds}));
      if(funds<2)
-      ws.send(get_messageJSON(`I'm running out of NUKO, please help by notifying the devs or donate to me at 0x1ec366337ef2de16a5765700da06bb96a7312845 `));
+      ws.send(get_messageJSON(`I'm running out of F0me, please help by notifying the devs or donate to me at 0x1ec366337ef2de16a5765700da06bb96a7312845 `));
       wss.clients.forEach(function each(client) {
         if (client.readyState === WebSocket.OPEN) {
           //client.send("test broadcast");
@@ -146,7 +146,7 @@ wss.on('connection', function (ws) {
   console.log("update ", blocks, " fund ", funds);
    ws.send(JSON.stringify({'blocks':blocks, 'funds':funds}));
    if(funds<2)
-    ws.send(get_messageJSON(`I'm running out of NUKO, please help by notifying the devs or donate to me at 0x1ec366337ef2de16a5765700da06bb96a7312845 `));
+    ws.send(get_messageJSON(`I'm running out of F0me, please help by notifying the devs or donate to me at 0x1ec366337ef2de16a5765700da06bb96a7312845 `));
 
 
   ws.on('message', function (message) {
@@ -201,8 +201,8 @@ wss.on('connection', function (ws) {
 									return;
 								}
 
-								if(data.text.toLowerCase().indexOf("nekonium") == -1){
-									ws.send(get_messageJSON("Tweet must contain #nekonium"));
+								if(data.text.toLowerCase().indexOf("f0me") == -1){
+									ws.send(get_messageJSON("Tweet must contain #f0me"));
 									console.log("have to return");
 									return;
 								}
@@ -228,7 +228,7 @@ wss.on('connection', function (ws) {
 										if(entry.toLowerCase().substr(0, 2) == '0x'){
 											console.log("found ", entry);
 											if(entry.toLowerCase().length >35 ){
-												var nuko_address = entry.toLowerCase();
+												var f0me_address = entry.toLowerCase();
 												ws.send(get_messageJSON("Tweet's content accepted, waiting for twitter bot detector in ~ 6 seconds"));
 												B.getBatchBotScores(names,data => {
 													var score = data[0].botometer.scores.universal;
@@ -240,11 +240,11 @@ wss.on('connection', function (ws) {
 												  console.log(score, content_score ,friend_score , network_score,sentiment_score);
 													if(score && score < 0.7 && content_score< 0.75 && friend_score<0.75 && network_score < 0.75 && sentiment_score<0.75)
 													{
-														console.log("passed bot check ",nuko_address);
+														console.log("passed bot check ",f0me_address);
 														console.log("sender ",sender);
-														//send nuko
-														//send_nuko(to, amount, ws, userid)
-														send_nuko(nuko_address,1, ws, sender);
+														//send f0me
+														//send_f0me(to, amount, ws, userid)
+														send_f0me(f0me_address,1, ws, sender);
 
 													}else {
 														ws.send(get_messageJSON("Are you a bot? If not, please add more friends, tweet more. Your account is very suspicious"));
