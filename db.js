@@ -1,8 +1,8 @@
 
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('databasefilename')
-const db = low(adapter)
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('databasefilename');
+const db = low(adapter);
 db.defaults({ accounts: []}).write();
 module.exports = {
     loadAccounts: () => {
@@ -16,7 +16,7 @@ module.exports = {
 
   addNewUser: (usrid) => {
 	const numacc =  db.get('accounts').find({ id: usrid }).size().value();
-	if (numacc != 0)
+	if (numacc !== 0)
 		{
 		 console.log("conflict writing ");
 			return;
