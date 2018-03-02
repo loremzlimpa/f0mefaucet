@@ -1,8 +1,8 @@
-# Nukofaucet
-Nekonium Twitter faucet
+# F0ME FAUCET
+F0me Twitter faucet
 # Features
 * inspired by https://faucet.rinkeby.io/
-* 1 nuko = 1 fresh tweet each day (must be tweeted less than 3 hours before submitting to this site)
+* 1 f0me = 1 fresh tweet each day (must be tweeted less than 3 hours before submitting to this site)
 * added extra secure layer using [botometer](https://botometer.iuni.iu.edu/#!/)
 * opensource (I cound not find the source of https://faucet.rinkeby.io/)
 # Install
@@ -12,7 +12,7 @@ Nekonium Twitter faucet
 * open browser => [http://localhost:3000](http://localhost:3000)
 
 # Donation for the faucet (not for myself)
-http://nekonium.network/account/0x1ec366337ef2de16a5765700da06bb96a7312845
+FUZRMukYiAxxDEpgtDgi9mJJ77MWkyqpZz
 
 # License 
-  Copyright 2018 @mike_theminer MIT License
+  Copyright 2018 MIT License
